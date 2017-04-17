@@ -6,6 +6,8 @@ import Main from 'Main';
 // Static components
 import Home from 'Home';
 import About from 'About';
+// MessageBoardApp components
+import MessageBoardApp from 'MessageBoardApp';
 
 // Load Foundation
 $(document).foundation();
@@ -17,6 +19,7 @@ ReactDOM.render(
   <Router history={hashHistory}>
     <Route path="/" component={Main}>
       <IndexRoute component={Home} />
+      <Route path="/messages" component={MessageBoardApp} />
       <Route path="/about" component={About} />
     </Route>
   </Router>,
