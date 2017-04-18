@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
+import * as actions from 'actions';
 import {Route, Router, IndexRoute, hashHistory} from 'react-router';
 
 // App CSS
@@ -15,6 +16,9 @@ import MessageBoardApp from 'MessageBoardApp';
 
 // configure redux store
 const store = require('configureStore').configure();
+
+// Actions to add messages to redux store
+store.dispatch(actions.startAddMessages());
 
 ReactDOM.render(
   <Provider store={store}>
