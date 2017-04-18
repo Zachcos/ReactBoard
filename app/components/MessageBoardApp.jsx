@@ -1,6 +1,8 @@
 import React from 'react';
 import uuid from 'uuid';
 
+import MessageList from 'MessageList';
+
 export class MessageBoardApp extends React.Component {
   constructor(props) {
     super(props);
@@ -26,9 +28,8 @@ export class MessageBoardApp extends React.Component {
     }
   }
   render() {
-    return (
-      <p>This is the message board component</p>
-    )
+    const {messages} = this.state;
+    return <MessageList messages={messages} />
   };
 };
 
