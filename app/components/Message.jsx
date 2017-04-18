@@ -1,6 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import * as actions from 'actions';
+
+import MessageForm from 'MessageForm';
 
 export class Message extends React.Component {
   constructor(props) {
@@ -10,8 +13,8 @@ export class Message extends React.Component {
       isEditing: false,
       message: this.props.message
     };
-
     this.toggleEdit = this.toggleEdit.bind(this);
+    this.saveMessage = this.saveMessage.bind(this);
     this.updateMessageState = this.updateMessageState.bind(this);
   }
 
@@ -19,12 +22,14 @@ export class Message extends React.Component {
     const field = event.target.name;
     const message = this.state.message;
     message[field] = event.target.value;
-    return this.setState({messsage});
+    return this.setState({message: message});
   }
 
   saveMessage(event) {
     event.preventDefault();
     this.props.actions.updateMessage(this.state.message)
+
+    this.setState({isEditing: !this.state.isEditing});
   }
 
   toggleEdit() {
@@ -38,22 +43,25 @@ export class Message extends React.Component {
   }
 
   render() {
-    const {message} = this.props;
-
     if (this.state.isEditing) {
       return (
         <div>
           <h2>Edit Message</h2>
+          <MessageForm
+            message={this.state.message}
+            onSave={this.saveMessage}
+            onChange={this.updateMessageState}
+          />
         </div>
       )
     }
 
     return (
       <div>
-        <h3>{message.subject}</h3>
-        <p>{message.body}</p>
+        <h3>{this.props.message.subject}</h3>
+        <p>{this.props.message.body}</p>
         <hr />
-        <p>This message's id is: {message.id}</p>
+        <p>This message's id is: {this.props.message.id}</p>
         <button className="btn btn-primary" onClick={this.toggleEdit}>Edit</button>
       </div>
     )
