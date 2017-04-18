@@ -22,7 +22,7 @@ export class Message extends React.Component {
     const field = event.target.name;
     const message = this.state.message;
     message[field] = event.target.value;
-    return this.setState({message: message});
+    return this.setState({message});
   }
 
   saveMessage(event) {

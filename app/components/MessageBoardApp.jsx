@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link, hashHistory} from 'react-router';
 
 import MessageList from 'MessageList';
 
@@ -7,7 +8,9 @@ class MessageBoardApp extends React.Component {
   render() {
     return (
       <div className="col-sm-12">
-        <h1>Messages</h1>
+        <h1>Messages &nbsp;
+          <Link to="messages/new" className="btn btn-primary">+ message</Link>
+        </h1>
         <div className="col-sm-4">
           <MessageList messages={this.props.messages} />
         </div>

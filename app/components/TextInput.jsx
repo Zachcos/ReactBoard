@@ -16,11 +16,4 @@ const TextInput = ({name, label, value, onChange}) => {
   )
 }
 
-TextInput.propTypes = {
-  name: React.PropTypes.string.isRequired,
-  label: React.PropTypes.string.isRequired,
-  onChange: React.PropTypes.func.isRequired,
-  value: React.PropTypes.string
-}
-
 export default TextInput;

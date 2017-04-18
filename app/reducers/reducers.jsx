@@ -7,6 +7,16 @@ export const messagesReducer = (state = [], action) => {
         ...state.filter(message => message.id !== action.message.id),
         action.message
       ];
+    case 'CREATE_MESSAGE':
+      hashHistory.push(`/messages/${action.id}`)
+      return [
+        ...state,
+        {
+          id: action.id,
+          subject: action.message.subject,
+          body: action.message.body
+        }
+      ];
     default:
       return state;
   }

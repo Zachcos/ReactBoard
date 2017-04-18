@@ -14,6 +14,7 @@ import About from 'About';
 // MessageBoardApp components
 import MessageBoardApp from 'MessageBoardApp';
 import Message from 'Message';
+import NewMessage from 'NewMessage';
 
 // configure redux store
 const store = require('configureStore').configure();
@@ -24,6 +25,7 @@ ReactDOM.render(
       <Route path='/' component={Main}>
         <IndexRoute component={Home} />
         <Route path='/messages' component={MessageBoardApp}>
+          <Route path='/messages/new' component={NewMessage} />
           <Route path='/messages/:id' component={Message} />
         </Route>
         <Route path='/about' component={About} />
