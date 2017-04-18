@@ -1,34 +1,12 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import uuid from 'uuid';
 
 import MessageList from 'MessageList';
 
 export class MessageBoardApp extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      messages: [
-        {
-          id: uuid(),
-          subject: 'This is test message #1',
-          body: 'This is the first message'
-        },
-        {
-          id: uuid(),
-          subject: 'This is test message #2',
-          body: 'This is the second message'
-        },
-        {
-          id: uuid(),
-          subject: 'This is test message #3',
-          body: 'This is the third message'
-        },
-      ]
-    }
-  }
   render() {
-    const {messages} = this.state;
+    const {messages} = this.props;
     return (
       <div className="col-sm-12">
         <h1>Messages</h1>
@@ -43,4 +21,4 @@ export class MessageBoardApp extends React.Component {
   };
 };
 
-export default MessageBoardApp;
+export default connect((state) => state)(MessageBoardApp);
