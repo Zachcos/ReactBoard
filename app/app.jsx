@@ -13,6 +13,7 @@ import Home from 'Home';
 import About from 'About';
 // MessageBoardApp components
 import MessageBoardApp from 'MessageBoardApp';
+import Message from 'Message';
 
 // configure redux store
 const store = require('configureStore').configure();
@@ -20,10 +21,12 @@ const store = require('configureStore').configure();
 ReactDOM.render(
   <Provider store={store}>
     <Router history={hashHistory}>
-      <Route path="/" component={Main}>
+      <Route path='/' component={Main}>
         <IndexRoute component={Home} />
-        <Route path="/messages" component={MessageBoardApp} />
-        <Route path="/about" component={About} />
+        <Route path='/messages' component={MessageBoardApp}>
+          <Route path='/messages/:id' component={Message} />
+        </Route>
+        <Route path='/about' component={About} />
       </Route>
     </Router>
   </Provider>,

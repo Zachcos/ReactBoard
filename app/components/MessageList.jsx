@@ -8,7 +8,7 @@ const MessageList = ({ messages }) => {
     return messages.map((message) => {
       return (
         <li key={message.id} className="list-group-item">
-          <Link to={`message/${message.id}`}>
+          <Link to={`messages/${message.id}`}>
             {message.subject}
           </Link>
         </li>
