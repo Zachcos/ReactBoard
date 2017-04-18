@@ -14,3 +14,10 @@ export const createMessage = (message) => {
     message
   }
 }
+
+export const deleteMessage = (id) => {
+  return {
+    type: 'DELETE_MESSAGE',
+    id
+  }
+}

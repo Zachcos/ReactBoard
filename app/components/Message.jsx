@@ -15,6 +15,7 @@ export class Message extends React.Component {
     };
     this.toggleEdit = this.toggleEdit.bind(this);
     this.saveMessage = this.saveMessage.bind(this);
+    this.deleteMessage = this.deleteMessage.bind(this);
     this.updateMessageState = this.updateMessageState.bind(this);
   }
 
@@ -30,6 +31,10 @@ export class Message extends React.Component {
     this.props.actions.updateMessage(this.state.message)
 
     this.setState({isEditing: !this.state.isEditing});
+  }
+
+  deleteMessage() {
+    this.props.actions.deleteMessage(this.state.message.id)
   }
 
   toggleEdit() {
@@ -62,7 +67,8 @@ export class Message extends React.Component {
         <p>{this.props.message.body}</p>
         <hr />
         <p>This message's id is: {this.props.message.id}</p>
-        <button className="btn btn-primary" onClick={this.toggleEdit}>Edit</button>
+        <button className="btn btn-primary" onClick={this.toggleEdit} style={{marginRight: 5}}>Edit</button>
+        <button className="btn btn-danger" onClick={this.deleteMessage}>Delete</button>
       </div>
     )
   }

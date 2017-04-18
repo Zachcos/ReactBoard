@@ -17,6 +17,11 @@ export const messagesReducer = (state = [], action) => {
           body: action.message.body
         }
       ];
+    case 'DELETE_MESSAGE':
+      hashHistory.push('/messages');
+      return [
+        ...state.filter(message => message.id !== action.id)
+      ]
     default:
       return state;
   }
