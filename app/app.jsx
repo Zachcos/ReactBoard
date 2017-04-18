@@ -17,9 +17,6 @@ import MessageBoardApp from 'MessageBoardApp';
 // configure redux store
 const store = require('configureStore').configure();
 
-// Actions to add messages to redux store
-store.dispatch(actions.startAddMessages());
-
 ReactDOM.render(
   <Provider store={store}>
     <Router history={hashHistory}>
