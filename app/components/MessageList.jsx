@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 
 import Message from 'Message';
 
@@ -7,7 +8,9 @@ const MessageList = ({ messages }) => {
     return messages.map((message) => {
       return (
         <li key={message.id} className="list-group-item">
-          <Message message={message} />
+          <Link to={`message/${message.id}`}>
+            {message.subject}
+          </Link>
         </li>
       )
     })
