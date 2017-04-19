@@ -2,6 +2,8 @@ import {hashHistory} from 'react-router';
 
 export const messagesReducer = (state = [], action) => {
   switch (action.type) {
+    case 'ADD_MESSAGES':
+      return action.messages;
     case 'UPDATE_MESSAGE':
       return [
         ...state.filter(message => message.id !== action.message.id),

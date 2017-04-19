@@ -19,6 +19,9 @@ import NewMessage from 'NewMessage';
 // configure redux store
 const store = require('configureStore').configure();
 
+// Dispatch actions to add firebase data to redux store
+store.dispatch(actions.startAddMessages());
+
 ReactDOM.render(
   <Provider store={store}>
     <Router history={hashHistory}>
