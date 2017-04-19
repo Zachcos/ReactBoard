@@ -7,6 +7,22 @@ export const updateMessage = (message) => {
   }
 }
 
+export const startUpdateMessage = (message) => {
+  return (dispatch) => {
+    const updates = {
+      subject: message.subject,
+      body: message.body
+    };
+    const MessageRef = firebaseRef.child(`messages/${message.id}`).update(updates);
+    return MessageRef.then(() => {
+      dispatch(updateMessage({
+        ...updates,
+        id: message.id
+      }))
+    })
+  }
+}
+
 export const createMessage = (message) => {
   return {
     type: 'CREATE_MESSAGE',

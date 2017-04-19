@@ -28,7 +28,7 @@ export class Message extends React.Component {
 
   saveMessage(event) {
     event.preventDefault();
-    this.props.actions.updateMessage(this.state.message)
+    this.props.actions.startUpdateMessage(this.state.message)
 
     this.setState({isEditing: !this.state.isEditing});
   }
