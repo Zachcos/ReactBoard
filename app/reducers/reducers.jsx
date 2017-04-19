@@ -10,14 +10,10 @@ export const messagesReducer = (state = [], action) => {
         action.message
       ];
     case 'CREATE_MESSAGE':
-      hashHistory.push(`/messages/${action.id}`)
+      hashHistory.push(`/messages/${action.message.id}`)
       return [
         ...state,
-        {
-          id: action.id,
-          subject: action.message.subject,
-          body: action.message.body
-        }
+        action.message
       ];
     case 'DELETE_MESSAGE':
       hashHistory.push('/messages');

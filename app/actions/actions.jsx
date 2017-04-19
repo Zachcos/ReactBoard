@@ -1,4 +1,3 @@
-import uuid from 'uuid';
 import firebase, {firebaseRef} from 'app/firebase';
 
 export const updateMessage = (message) => {
@@ -11,41 +10,52 @@ export const updateMessage = (message) => {
 export const createMessage = (message) => {
   return {
     type: 'CREATE_MESSAGE',
-    id: uuid(),
     message
-  }
-}
+  };
+};
+
+export const startCreateMessage = (message) => {
+  return (dispatch) => {
+    const MessageRef = firebaseRef.child('messages').push(message);
+    return MessageRef.then(() => {
+      dispatch(createMessage({
+        ...message,
+        id: MessageRef.key
+      }))
+    })
+  };
+};
 
 export const deleteMessage = (id) => {
   return {
     type: 'DELETE_MESSAGE',
     id
-  }
-}
+  };
+};
 
 export const addMessages = (messages) => {
   return {
     type: 'ADD_MESSAGES',
     messages
-  }
-}
+  };
+};
 
 export const startAddMessages = () => {
   return (dispatch, getState) => {
-    var messagesRef = firebaseRef.child('messages');
+    const messagesRef = firebaseRef.child('messages');
 
     return messagesRef.once('value').then((snapshot) => {
-      var messages = snapshot.val() || {};
-      var parsedMessages = [];
+      const messages = snapshot.val() || {};
+      let parsedMessages = [];
 
       Object.keys(messages).forEach((messageId) => {
         parsedMessages.push({
           id: messageId,
-          ...message[messageId]
+          ...messages[messageId]
         });
       });
 
       dispatch(addMessages(parsedMessages));
     })
-  }
-}
+  };
+};

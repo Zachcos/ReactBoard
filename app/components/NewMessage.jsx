@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from 'actions';
+import uuid from 'uuid';
 import MessageForm from 'MessageForm';
 
 
@@ -30,7 +31,7 @@ class NewMessage extends React.Component {
 
   saveMessage(event) {
     event.preventDefault();
-    this.props.actions.createMessage(this.state.message);
+    this.props.actions.startCreateMessage(this.state.message);
   }
 
   render() {
