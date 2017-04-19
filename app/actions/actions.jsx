@@ -33,6 +33,15 @@ export const deleteMessage = (id) => {
   };
 };
 
+export const startDeleteMessage = (id) => {
+  return (dispatch) => {
+    const MessageRef = firebaseRef.child(`messages/${id}`).remove();
+    return MessageRef.then(() => {
+      dispatch(deleteMessage(id));
+    })
+  }
+}
+
 export const addMessages = (messages) => {
   return {
     type: 'ADD_MESSAGES',

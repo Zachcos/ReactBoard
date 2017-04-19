@@ -34,7 +34,7 @@ export class Message extends React.Component {
   }
 
   deleteMessage() {
-    this.props.actions.deleteMessage(this.state.message.id)
+    this.props.actions.startDeleteMessage(this.state.message.id)
   }
 
   toggleEdit() {
