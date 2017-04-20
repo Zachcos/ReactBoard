@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
+import PropTypes from 'prop-types';
 
 const MessageList = ({ messages }) => {
   const renderList = () => {
@@ -28,6 +29,10 @@ const MessageList = ({ messages }) => {
       {renderList()}
     </ul>
   )
+}
+
+MessageList.propTypes = {
+  messages: PropTypes.array.isRequired
 }
 
 export default MessageList;
