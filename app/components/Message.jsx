@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from 'actions';
+import PropTypes from 'prop-types';
 
 import MessageForm from 'MessageForm';
 
@@ -72,6 +73,12 @@ export class Message extends React.Component {
       </div>
     )
   }
+}
+
+Message.propTypes = {
+  onSave: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  message: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state, ownProps) => {
