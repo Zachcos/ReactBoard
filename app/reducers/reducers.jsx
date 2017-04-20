@@ -27,6 +27,8 @@ export const messagesReducer = (state = [], action) => {
 
 export const usersReducer = (state = [], action) => {
   switch (action.type) {
+    case 'ADD_USERS':
+      return action.users;
     case 'ADD_USER':
       return [
         ...state,

@@ -116,3 +116,30 @@ export const startAddUser = (user) => {
     });
   }
 };
+
+export const addUsers = (users) => {
+  return {
+    type: 'ADD_USERS',
+    users
+  };
+};
+
+export const startAddUsers = () => {
+  return (dispatch, getState) => {
+    const usersRef = firebaseRef.child('users');
+
+    return usersRef.once('value').then((snapshot) => {
+      const users = snapshot.val() || {};
+      const parsedUsers = [];
+
+      Object.keys(users).forEach((userId) => {
+        parsedUsers.push({
+          id: userId,
+          ...users[userId]
+        });
+      });
+
+      dispatch(addUsers(parsedUsers));
+    })
+  };
+};
