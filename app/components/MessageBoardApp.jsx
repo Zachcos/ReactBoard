@@ -24,7 +24,8 @@ class MessageBoardApp extends React.Component {
 };
 
 MessageBoardApp.propTypes = {
-  messages: PropTypes.object.isRequired
+  messages: PropTypes.array.isRequired,
+  children: PropTypes.element
 }
 
 export default connect((state) => state)(MessageBoardApp);

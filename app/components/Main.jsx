@@ -7,8 +7,10 @@ export class Main extends React.Component {
     return (
       <div>
         <Navigation />
-        <div className="row">
-          {this.props.children}
+        <div className="container-fluid">
+          <div className="row">
+            {this.props.children}
+          </div>
         </div>
       </div>
     )
