@@ -105,6 +105,16 @@ export const startUserLogin = (user) => {
   }
 }
 
+export const userLogout = () => {
+  return (dispatch, getState) => {
+    firebase.auth().signOut().then(() => {
+      console.log('User signed out successfully')
+    }, (error) => {
+      console.log('An error occurred', error)
+    })
+  }
+}
+
 export const addUser = (user) => {
   return {
     type: 'ADD_USER',

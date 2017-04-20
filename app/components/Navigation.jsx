@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link, IndexLink, hashHistory} from 'react-router';
 import {connect} from 'react-redux';
-import bindActionCreators from 'redux';
+import {bindActionCreators} from 'redux';
 import * as actions from 'actions';
 import firebase from 'app/firebase';
 
@@ -16,7 +16,7 @@ export class Navigation extends React.Component {
   }
 
   startUserLogout() {
-    this.props.dispatch(actions.userLogout());
+    this.props.actions.userLogout();
     hashHistory.push('/');
   }
 
@@ -94,7 +94,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    bindActionCreators: (actions, dispatch)
+    actions: bindActionCreators(actions, dispatch)
   }
 }
 
