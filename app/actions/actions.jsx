@@ -1,4 +1,5 @@
 import firebase, {firebaseRef} from 'app/firebase';
+import {hashHistory} from 'react-router';
 
 export const updateMessage = (message) => {
   return {

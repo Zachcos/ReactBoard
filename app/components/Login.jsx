@@ -3,6 +3,7 @@ import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import LoginForm from 'LoginForm';
 import * as actions from 'actions';
+import {bindActionCreators} from 'redux';
 
 export class Login extends React.Component {
   constructor(props) {
@@ -28,7 +29,7 @@ export class Login extends React.Component {
 
   startUserLogin(event) {
     event.preventDefault();
-    alert(this.state.user.email)
+    this.props.actions.startUserLogin(this.state.user);
   }
 
   render() {
@@ -48,4 +49,14 @@ export class Login extends React.Component {
   }
 }
 
-export default Login;
+const mapStateToProps = (state, ownProps) => {
+  return state;
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
