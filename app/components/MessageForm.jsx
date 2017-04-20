@@ -1,5 +1,6 @@
 import React from 'react';
 import TextInput from 'TextInput';
+import PropTypes from 'prop-types';
 
 const MessageForm = ({message, onSave, onChange}) =>
   <div>
@@ -23,5 +24,9 @@ const MessageForm = ({message, onSave, onChange}) =>
     </form>
   </div>
 
-
+MessageForm.propTypes = {
+  message: PropTypes.object.isRequired,
+  onSave: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired
+}
 export default MessageForm;

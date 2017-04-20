@@ -2,9 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from 'actions';
-import uuid from 'uuid';
 import MessageForm from 'MessageForm';
-
+import PropTypes from 'prop-types';
 
 class NewMessage extends React.Component {
   constructor(props) {
