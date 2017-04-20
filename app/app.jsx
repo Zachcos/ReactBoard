@@ -4,9 +4,6 @@ import {Provider} from 'react-redux';
 import * as actions from 'actions';
 import {Route, Router, IndexRoute, hashHistory} from 'react-router';
 
-// App CSS
-require('style!css!sass!applicationStyles')
-
 import Main from 'Main';
 // Static components
 import Home from 'Home';

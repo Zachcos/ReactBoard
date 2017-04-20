@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link, hashHistory} from 'react-router';
+import PropTypes from 'prop-types';
 
 import MessageList from 'MessageList';
 
@@ -21,5 +22,9 @@ class MessageBoardApp extends React.Component {
     )
   };
 };
+
+MessageBoardApp.propTypes = {
+  messages: PropTypes.object.isRequired
+}
 
 export default connect((state) => state)(MessageBoardApp);
