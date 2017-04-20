@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import * as actions from 'actions';
+import firebase from 'app/firebase';
 import {Route, Router, IndexRoute, hashHistory} from 'react-router';
 
 import Main from 'Main';
@@ -21,13 +22,30 @@ const store = require('configureStore').configure();
 // Dispatch actions to add firebase data to redux store
 store.dispatch(actions.startAddMessages());
 
+// Logging current user on auth state change
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    console.log('user logged in:', user);
+  } else {
+    console.log('no user currently logged in')
+  }
+});
+
+// requireAuth function to ensure users are logged in when creating messages
+const requireAuth = (nextState, replace, next) => {
+  if (!firebase.auth().currentUser) {
+    replace('/user/new');
+  }
+  next();
+}
+
 ReactDOM.render(
   <Provider store={store}>
     <Router history={hashHistory}>
       <Route path='/' component={Main}>
         <IndexRoute component={Home} />
         <Route path='/messages' component={MessageBoardApp}>
-          <Route path='/messages/new' component={NewMessage} />
+          <Route path='/messages/new' component={NewMessage} onEnter={requireAuth} />
           <Route path='/messages/:id' component={Message} />
         </Route>
         <Route path='/about' component={About} />

@@ -31,7 +31,7 @@ export class NewUser extends React.Component {
 
   saveUser(event) {
     event.preventDefault();
-    alert(event.target.username)
+    this.props.actions.startAddUser(this.state.user)
   }
 
   render() {

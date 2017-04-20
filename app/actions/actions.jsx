@@ -84,3 +84,35 @@ export const startAddMessages = () => {
     })
   };
 };
+
+export const addUser = (user) => {
+  return {
+    type: 'ADD_USER',
+    user
+  }
+}
+
+export const startAddUser = (user) => {
+  return (dispatch, getState) => {
+    const {username, displayName, email, password} = user;
+    const UserRef = firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
+    return UserRef.then(() => {
+      const updateUser = firebase.auth().currentUser.updateProfile({
+        displayName
+      }).then(() => {
+        const uid = firebase.auth().currentUser.uid;
+        const newUser = {
+          displayName,
+          username,
+          email,
+          uid
+        };
+        const NewUserRef = firebaseRef.child('users').push(newUser);
+        dispatch(addUser(newUser));
+      });
+    });
+  }
+};

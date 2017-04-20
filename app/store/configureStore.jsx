@@ -1,13 +1,13 @@
 import * as redux from 'redux';
 import thunk from 'redux-thunk';
-import uuid from 'uuid';
 
-import {messagesReducer} from 'reducers';
+import {messagesReducer, usersReducer} from 'reducers';
 
 
 export const configure = (initialState = {}) => {
   const reducer = redux.combineReducers({
-    messages: messagesReducer
+    messages: messagesReducer,
+    users: usersReducer
   });
 
   const store = redux.createStore(reducer, initialState, redux.compose(
