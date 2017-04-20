@@ -12,6 +12,8 @@ import About from 'About';
 import MessageBoardApp from 'MessageBoardApp';
 import Message from 'Message';
 import NewMessage from 'NewMessage';
+// User Auth components
+import NewUser from 'NewUser';
 
 // configure redux store
 const store = require('configureStore').configure();
@@ -29,6 +31,7 @@ ReactDOM.render(
           <Route path='/messages/:id' component={Message} />
         </Route>
         <Route path='/about' component={About} />
+        <Route path='/user/new' component={NewUser} />
       </Route>
     </Router>
   </Provider>,
