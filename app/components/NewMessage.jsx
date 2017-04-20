@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import * as actions from 'actions';
 import MessageForm from 'MessageForm';
 import PropTypes from 'prop-types';
+import firebase from 'app/firebase';
 
 class NewMessage extends React.Component {
   constructor(props) {
@@ -12,11 +13,11 @@ class NewMessage extends React.Component {
     this.state = {
       message: {
         subject: '',
-        body: ''
+        body: '',
+        userId: ''
       }
     };
 
-    // this.redirect = this.redirect.bind(this);
     this.saveMessage = this.saveMessage.bind(this);
     this.updateMessageState = this.updateMessageState.bind(this);
   }
@@ -25,6 +26,7 @@ class NewMessage extends React.Component {
     const field = event.target.name;
     const message = this.state.message;
     message[field] = event.target.value;
+    message.userId = firebase.auth().currentUser.uid;
     return this.setState({message})
   }
 
