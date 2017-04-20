@@ -76,8 +76,6 @@ export class Message extends React.Component {
 }
 
 Message.propTypes = {
-  onSave: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
   message: PropTypes.object.isRequired
 }
 

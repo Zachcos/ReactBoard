@@ -30,6 +30,7 @@ export const usersReducer = (state = [], action) => {
     case 'ADD_USERS':
       return action.users;
     case 'ADD_USER':
+      hashHistory.push('/');
       return [
         ...state,
         action.user

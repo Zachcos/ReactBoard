@@ -85,6 +85,26 @@ export const startAddMessages = () => {
   };
 };
 
+
+
+
+
+
+
+export const startUserLogin = (user) => {
+  return (dispatch, getState) => {
+    const {email, password} = user;
+    const LoginRef = firebase.auth().signInWithEmailAndPassword(email, password).catch(error => {
+      console.log('errorCode: ', error);
+      console.log('errorMessage: ', message);
+    });
+
+    return LoginRef.then(() => {
+      hashHistory.push('/messages')
+    })
+  }
+}
+
 export const addUser = (user) => {
   return {
     type: 'ADD_USER',
