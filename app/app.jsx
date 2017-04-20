@@ -16,6 +16,7 @@ import NewMessage from 'NewMessage';
 // User Auth components
 import NewUser from 'NewUser';
 import Login from 'Login';
+import Profile from 'Profile';
 
 // configure redux store
 const store = require('configureStore').configure();
@@ -53,6 +54,7 @@ ReactDOM.render(
         <Route path='/about' component={About} />
         <Route path='/user/new' component={NewUser} />
         <Route path='/user/login' component={Login} />
+        <Route path='/user/profile' component={Profile} />
       </Route>
     </Router>
   </Provider>,

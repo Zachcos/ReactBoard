@@ -54,7 +54,7 @@ export class Navigation extends React.Component {
               style={{marginRight: 10}}
               data-toggle="dropdown">Profile <span className="caret"></span></button>
             <ul className="dropdown-menu">
-              <li>UPCOMING LINK TO PROFILE</li>
+              <li><Link to="/user/profile">View profile</Link></li>
               <li role="separator" className="divider"></li>
               <li>
                 <button
