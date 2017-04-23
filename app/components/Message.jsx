@@ -50,20 +50,27 @@ export class Message extends React.Component {
   }
 
   render() {
-
     const renderMessageButtons = () => {
       const activeUser = firebase.auth().currentUser;
-
       if(activeUser) {
         if (this.state.message.userId === activeUser.uid) {
           return (
-            <div>
+            <div style={{display: 'inline'}}>
               <button className="btn btn-primary" onClick={this.toggleEdit} style={{marginRight: 5}}>Edit</button>
               <button className="btn btn-danger" onClick={this.deleteMessage}>Delete</button>
             </div>
           )
         }
       }
+    }
+
+    const renderAuthor = () => {
+      const {message, users} = this.props;
+      let author = '';
+      if (users.length > 0) {
+        author = {...users.find(user => user.uid === message.userId)}
+      }
+      return <i style={{display: 'inline', float: 'right', marginTop: 7}}>Post created by: {author.displayName}</i>
     }
 
     if (this.state.isEditing) {
@@ -80,12 +87,17 @@ export class Message extends React.Component {
     }
 
     return (
-      <div>
-        <h3>{this.props.message.subject}</h3>
-        <p>{this.props.message.body}</p>
-        <hr />
-        <p>This message's id is: {this.props.message.id}</p>
-        {renderMessageButtons()}
+      <div className="panel panel-default">
+        <div className="panel-heading">
+          <h4>{this.props.message.subject}</h4>
+        </div>
+        <div className="panel-body">
+          <p>{this.props.message.body}</p>
+        </div>
+        <div className="panel-footer">
+          {renderMessageButtons()}
+          {renderAuthor()}
+        </div>
       </div>
     )
   }
@@ -102,7 +114,8 @@ const mapStateToProps = (state, ownProps) => {
     message = Object.assign({}, state.messages.find(message => message.id === messageId))
   }
   return {
-    message
+    message,
+    users: state.users
   }
 }
 
