@@ -1,5 +1,5 @@
 import React from 'react';
-import {hashHistory} from 'react-router';
+import {Link, hashHistory} from 'react-router';
 import {connect} from 'react-redux';
 import firebase from 'app/firebase';
 
@@ -18,7 +18,7 @@ export class Profile extends React.Component {
               </div>
               <div className="panel-body">
                 <p>{message.body}</p>
-                <p>{message.id}</p>
+                <Link to={`/messages/${message.id}`}>View this message</Link>
               </div>
             </div>
           )
