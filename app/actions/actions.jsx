@@ -18,7 +18,8 @@ export const startUpdateMessage = (message) => {
     return MessageRef.then(() => {
       dispatch(updateMessage({
         ...updates,
-        id: message.id
+        id: message.id,
+        userId: message.userId
       }))
     })
   }
