@@ -18,7 +18,9 @@ export class Profile extends React.Component {
               </div>
               <div className="panel-body">
                 <p>{message.body}</p>
-                <Link to={`/messages/${message.id}`}>View this message</Link>
+              </div>
+              <div className="panel-footer">
+                <Link to={`/messages/${message.id}`}>Message id: {message.id}</Link>
               </div>
             </div>
           )
