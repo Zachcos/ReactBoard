@@ -37,7 +37,7 @@ firebase.auth().onAuthStateChanged((user) => {
 // requireAuth function to ensure users are logged in when creating messages
 const requireAuth = (nextState, replace, next) => {
   if (!firebase.auth().currentUser) {
-    replace('/user/new');
+    replace('/user/login');
   }
   next();
 }
