@@ -70,7 +70,7 @@ export class Message extends React.Component {
       if (users.length > 0) {
         author = {...users.find(user => user.uid === message.userId)}
       }
-      return <i style={{display: 'inline', float: 'right', marginTop: 7}}>Post created by: {author.displayName}</i>
+      return <i style={{display: 'inline', float: 'right', marginTop: 10}}>Post created by: {author.displayName}</i>
     }
 
     if (this.state.isEditing) {
@@ -89,14 +89,14 @@ export class Message extends React.Component {
     return (
       <div className="panel panel-default">
         <div className="panel-heading">
-          <h4>{this.props.message.subject}</h4>
+          <h4 style={{display: 'inline-block'}} >{this.props.message.subject}</h4>
+          {renderAuthor()}
         </div>
         <div className="panel-body">
           <p>{this.props.message.body}</p>
         </div>
         <div className="panel-footer">
           {renderMessageButtons()}
-          {renderAuthor()}
         </div>
       </div>
     )
