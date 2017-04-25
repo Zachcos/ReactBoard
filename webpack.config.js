@@ -7,10 +7,7 @@ module.exports = {
     './app/app.jsx'
   ],
   externals: {
-    jquery: 'jQuery',
-    'react/addons': true,
-    'react/lib/ExecutionEnvironment': true,
-    'react/lib/ReactContext': true
+    'jquery': 'jQuery',
   },
   plugins: [
     new webpack.ProvidePlugin({
@@ -36,7 +33,7 @@ module.exports = {
       reducers: 'app/reducers/reducers.jsx',
       configureStore: 'app/store/configureStore.jsx'
     },
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', 'json']
   },
   module: {
     rules: [

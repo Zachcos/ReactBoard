@@ -3,7 +3,7 @@ var webpackConfig = require('./webpack.config');
 module.exports = function(config) {
   config.set({
     basePath: '',
-    frameworks: ['mocha', 'sinon'],
+    frameworks: ['mocha'],
     files: [
       'app/tests/**/*.jsx'
     ],
@@ -12,7 +12,12 @@ module.exports = function(config) {
     },
     webpack: {
       module: webpackConfig.module,
-      resolve: webpackConfig.resolve
+      resolve: webpackConfig.resolve,
+      externals: {
+        'react/addons': true,
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': true
+      }
     },
     webpackMiddleware: {
       noInfo: true
