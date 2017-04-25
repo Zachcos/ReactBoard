@@ -1,16 +1,21 @@
-var webpackConfig = require('./webpack.config.js');
+var webpackConfig = require('./webpack.config');
 
-module.exports = function (config) {
+module.exports = function(config) {
   config.set({
-    browsers: ['Chrome'],
-    singleRun: true,
-    frameworks: ['mocha'],
+    basePath: '',
+    frameworks: ['mocha', 'sinon'],
     files: [
-      'node_modules/jquery/dist/jquery.min.js',
-      'app/tests/**/*.test.jsx'
+      'app/tests/**/*.jsx'
     ],
     preprocessors: {
-      'app/tests/**/*.test.jsx': ['webpack', 'sourcemap']
+      'app/tests/**/*.jsx': ['webpack']
+    },
+    webpack: {
+      module: webpackConfig.module,
+      resolve: webpackConfig.resolve
+    },
+    webpackMiddleware: {
+      noInfo: true
     },
     reporters: ['mocha'],
     client: {
@@ -18,9 +23,12 @@ module.exports = function (config) {
         timeout: '5000'
       }
     },
-    webpack: webpackConfig,
-    webpackServer: {
-      noInfo: true
-    }
-  });
-};
+    port: 9876,
+    colors: true,
+    logLevel: config.LOG_INFO,
+    autoWatch: true,
+    browsers: ['Chrome'],
+    singleRun: true,
+    concurrency: Infinity
+  })
+}
