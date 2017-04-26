@@ -10,7 +10,7 @@ import Home from 'Home';
 import About from 'About';
 
 describe('Component: Main', () => {
-  var store = configureStore.configure();
+  const store = configureStore.configure();
   const wrapper = mount(
     <Provider store={store}>
       <Main>
