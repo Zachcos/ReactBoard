@@ -2,7 +2,13 @@ import React from 'react';
 import {Link} from 'react-router';
 import PropTypes from 'prop-types';
 
-const MessageList = ({ messages }) => {
+const MessageList = ({ messages, searchText }) => {
+
+  const isSearched = (searchText) => (message) => {
+    return !searchText ||
+    message.subject.toLowerCase().includes(searchText.toLowerCase());
+  }
+
   const renderList = () => {
 
     if (messages.length === 0) {
@@ -13,7 +19,7 @@ const MessageList = ({ messages }) => {
       )
     }
 
-    return messages.map(message => {
+    return messages.filter(isSearched(searchText)).map(message => {
       return (
         <li key={message.id} className="list-group-item">
           <Link to={`messages/${message.id}`}>

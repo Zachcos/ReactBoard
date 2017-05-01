@@ -17,7 +17,7 @@ class MessageBoardApp extends React.Component {
 
   updateSearchText(event) {
     const currentSearch = event.target.value;
-    this.setState({searchText: currentSearch})
+    this.setState({ searchText: currentSearch })
   }
 
   render() {
@@ -27,8 +27,8 @@ class MessageBoardApp extends React.Component {
           <Link to="messages/new" className="btn btn-primary">+ message</Link>
         </h1>
         <div className="col-sm-4">
-          <MessageListSearchForm searchText={this.props.searchText} onChange={this.updateSearchText} />
-          <MessageList messages={this.props.messages} searchText={this.props.searchText} />
+          <MessageListSearchForm searchText={this.state.searchText} onChange={this.updateSearchText} />
+          <MessageList messages={this.props.messages} searchText={this.state.searchText} />
         </div>
         <div className="col-sm-8">
           {this.props.children}
