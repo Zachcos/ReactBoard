@@ -4,8 +4,22 @@ import {Link, hashHistory} from 'react-router';
 import PropTypes from 'prop-types';
 
 import MessageList from 'MessageList';
+import MessageListSearchForm from 'MessageListSearchForm';
 
 class MessageBoardApp extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { searchText: '' };
+
+    this.updateSearchText = this.updateSearchText.bind(this);
+  }
+
+  updateSearchText(event) {
+    const currentSearch = event.target.value;
+    this.setState({searchText: currentSearch})
+  }
+
   render() {
     return (
       <div className="col-sm-12">
@@ -13,7 +27,8 @@ class MessageBoardApp extends React.Component {
           <Link to="messages/new" className="btn btn-primary">+ message</Link>
         </h1>
         <div className="col-sm-4">
-          <MessageList messages={this.props.messages} />
+          <MessageListSearchForm searchText={this.props.searchText} onChange={this.updateSearchText} />
+          <MessageList messages={this.props.messages} searchText={this.props.searchText} />
         </div>
         <div className="col-sm-8">
           {this.props.children}
