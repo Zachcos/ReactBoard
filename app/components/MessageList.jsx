@@ -38,7 +38,8 @@ const MessageList = ({ messages, searchText }) => {
 }
 
 MessageList.propTypes = {
-  messages: PropTypes.array.isRequired
+  messages: PropTypes.array.isRequired,
+  searchText: PropTypes.string
 }
 
 export default MessageList;
