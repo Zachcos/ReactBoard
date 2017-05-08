@@ -2,8 +2,6 @@ import React from 'react';
 import expect from 'expect';
 import {shallow, mount} from 'enzyme';
 import {Link} from 'react-router';
-import {Provider} from 'react-redux';
-import {configure} from 'configureStore';
 
 import {Message} from 'Message';
 
