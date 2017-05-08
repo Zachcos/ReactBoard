@@ -8,9 +8,10 @@ import {Message} from 'Message';
 describe('Component: Message', () => {
   const props = {
     message: {
-      id: 123,
+      id: 1,
       subject: 'this is a test',
-      body: 'this is the test body'
+      body: 'this is the test body',
+      userId: 123
     },
     users: [
       {
@@ -36,4 +37,8 @@ describe('Component: Message', () => {
   it('should render a <p> with the message body', () => {
     expect(wrapper.find('p').text()).toBe(props.message.body)
   });
+
+  it('should render <i> with author name', () => {
+    expect(wrapper.find('i').text()).toBe(`Post created by: ${props.users[0].displayName}`)
+  })
 });
