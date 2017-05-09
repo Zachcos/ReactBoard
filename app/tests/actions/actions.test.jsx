@@ -7,7 +7,7 @@ import * as actions from 'actions';
 
 const createMockStore = configureMockStore([thunk]);
 
-describe('Actions', () => {
+describe('Actions: Messages', () => {
   it('should generate createMessage action', () => {
     const action = {
       type: 'CREATE_MESSAGE',
@@ -21,7 +21,7 @@ describe('Actions', () => {
 
     expect(res).toEqual(action);
   });
-  
+
   it('should generate addMessages action', () => {
     const messages = [{
       id: 1,
@@ -53,4 +53,22 @@ describe('Actions', () => {
     expect(res).toEqual(action);
   });
 
+});
+
+describe('Actions: Users', () => {
+  it('should generate addUser action', () => {
+    const action = {
+      type: 'ADD_USER',
+      user: {
+        displayName: 'Test Account',
+        username: 'test_acc',
+        email: 'test@test.com',
+        uid: 123
+      }
+    };
+
+    const res = actions.addUser(action.user);
+
+    expect(res).toEqual(action);
+  });
 });
