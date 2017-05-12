@@ -10,14 +10,23 @@ class MessageBoardApp extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { searchText: '' };
+    this.state = {
+      searchText: '',
+      currentCategory: 'ALL'
+    };
 
     this.updateSearchText = this.updateSearchText.bind(this);
+    this.updateCatFilter = this.updateCatFilter.bind(this);
   }
 
   updateSearchText(event) {
     const currentSearch = event.target.value;
     this.setState({ searchText: currentSearch })
+  }
+
+  updateCatFilter(event) {
+    const currentCat = event.target.value;
+    this.setState({ currentCategory: currentCat })
   }
 
   render() {
@@ -27,8 +36,25 @@ class MessageBoardApp extends React.Component {
           <Link to="messages/new" className="btn btn-primary">+ message</Link>
         </h1>
         <div className="col-sm-4">
+          <label htmlFor="category">Filter messages by Category</label>
+          <select
+            name="category"
+            selected="ALL"
+            type="select"
+            value={this.state.currentCategory}
+            onChange={this.updateCatFilter}
+            style={{display: 'block'}}>
+            <option value="ALL">All</option>
+            <option value="cat1">Category 1</option>
+            <option value="cat2">Category 2</option>
+            <option value="cat3">Category 3</option>
+          </select>
+          <br />
           <MessageListSearchForm searchText={this.state.searchText} onChange={this.updateSearchText} />
-          <MessageList messages={this.props.messages} searchText={this.state.searchText} />
+          <MessageList
+            messages={this.props.messages}
+            searchText={this.state.searchText}
+            currentCategory={this.state.currentCategory} />
         </div>
         <div className="col-sm-8">
           {this.props.children}
