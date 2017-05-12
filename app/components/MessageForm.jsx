@@ -17,6 +17,17 @@ const MessageForm = ({message, onSave, onChange}) =>
         type="text"
         value={message.body}
         onChange={onChange} />
+      <label htmlFor="category">Category:</label>
+      <select
+        name="category"
+        value={message.category}
+        onChange={onChange}
+        style={{display: 'block'}}>
+        <option value="cat1">Category 1</option>
+        <option value="cat2">Category 2</option>
+        <option value="cat3">Category 3</option>
+      </select>
+      <br />
       <input
         type="submit"
         className="btn btn-success"
