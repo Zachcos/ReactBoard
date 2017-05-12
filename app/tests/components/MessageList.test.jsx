@@ -22,11 +22,11 @@ describe('Component: MessageList', () => {
     expect(wrapper).toExist();
   });
 
-  it('should render a <li> for each message passed in', () => {
+  it('should render <li> for each message passed in', () => {
     expect(wrapper.children().length).toBe(messages.length)
   });
 
-  it('should render a <Link> for each <li>', () => {
+  it('should render <Link> for each <li>', () => {
     expect(wrapper.find('Link').length).toBe(messages.length);
   });
 });

@@ -11,11 +11,11 @@ describe('Component: About', () => {
     expect(wrapper).toExist();
   })
 
-  it('should render a header', () => {
+  it('should render header', () => {
     expect(wrapper.find('h2').length).toBe(1);
   })
 
-  it('should render a paragraph', () => {
+  it('should render paragraph', () => {
     expect(wrapper.find('p').length).toBe(1);
   });
 });

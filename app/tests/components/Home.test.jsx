@@ -11,15 +11,15 @@ describe('Component: Home', () => {
     expect(wrapper).toExist();
   });
 
-  it('should render a header', () => {
+  it('should render header', () => {
     expect(wrapper.find('h1').length).toBe(1);
   });
 
-  it('should render a paragraph', () => {
+  it('should render paragraph', () => {
     expect(wrapper.find('p').length).toBe(1);
   });
 
-  it('should render a button', () => {
+  it('should render button', () => {
     expect(wrapper.find('button').length).toBe(1);
   });
 });

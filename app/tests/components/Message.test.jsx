@@ -34,7 +34,7 @@ describe('Component: Message', () => {
     expect(wrapper.find('h4').text()).toBe(props.message.subject)
   });
 
-  it('should render a <p> with the message body', () => {
+  it('should render <p> with the message body', () => {
     expect(wrapper.find('p').text()).toBe(props.message.body)
   });
 
