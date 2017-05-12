@@ -33,19 +33,26 @@ class MessageBoardApp extends React.Component {
   render() {
     return (
       <div className="col-sm-12">
-        <h1>Messages &nbsp;
+        <h1 style={{marginBottom: 30}}>Messages &nbsp;
           <Link to="messages/new" className="btn btn-primary">+ message</Link>
         </h1>
-        <div className="col-sm-4">
-          <MessageListFilterDropdown currentCategory={this.state.currentCategory} onChange={this.updateCatFilter} />
-          <MessageListSearchForm searchText={this.state.searchText} onChange={this.updateSearchText} />
+        <div className="col-sm-3">
           <MessageList
             messages={this.props.messages}
             searchText={this.state.searchText}
             currentCategory={this.state.currentCategory} />
         </div>
-        <div className="col-sm-8">
+        <div className="col-sm-6">
           {this.props.children}
+        </div>
+        <div className="col-sm-3">
+          <div className="panel panel-default">
+            <div className="panel-heading"><h4>Filter and Search</h4></div>
+            <div className="panel-body">
+              <MessageListFilterDropdown currentCategory={this.state.currentCategory} onChange={this.updateCatFilter} />
+              <MessageListSearchForm searchText={this.state.searchText} onChange={this.updateSearchText} />
+            </div>
+          </div>
         </div>
       </div>
     )
