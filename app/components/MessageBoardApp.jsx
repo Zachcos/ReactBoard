@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 import MessageList from 'MessageList';
 import MessageListSearchForm from 'MessageListSearchForm';
+import MessageListFilterDropdown from 'MessageListFilterDropdown';
 
 class MessageBoardApp extends React.Component {
   constructor(props) {
@@ -36,20 +37,7 @@ class MessageBoardApp extends React.Component {
           <Link to="messages/new" className="btn btn-primary">+ message</Link>
         </h1>
         <div className="col-sm-4">
-          <label htmlFor="category">Filter messages by Category</label>
-          <select
-            name="category"
-            selected="ALL"
-            type="select"
-            value={this.state.currentCategory}
-            onChange={this.updateCatFilter}
-            style={{display: 'block'}}>
-            <option value="ALL">All</option>
-            <option value="cat1">Category 1</option>
-            <option value="cat2">Category 2</option>
-            <option value="cat3">Category 3</option>
-          </select>
-          <br />
+          <MessageListFilterDropdown currentCategory={this.state.currentCategory} onChange={this.updateCatFilter} />
           <MessageListSearchForm searchText={this.state.searchText} onChange={this.updateSearchText} />
           <MessageList
             messages={this.props.messages}
