@@ -12,7 +12,8 @@ export const startUpdateMessage = (message) => {
   return (dispatch) => {
     const updates = {
       subject: message.subject,
-      body: message.body
+      body: message.body,
+      category: message.category
     };
     const MessageRef = firebaseRef.child(`messages/${message.id}`).update(updates);
     return MessageRef.then(() => {

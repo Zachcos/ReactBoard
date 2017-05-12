@@ -14,7 +14,7 @@ class NewMessage extends React.Component {
       message: {
         subject: '',
         body: '',
-        category: '',
+        category: 'cat1',
         userId: ''
       }
     };

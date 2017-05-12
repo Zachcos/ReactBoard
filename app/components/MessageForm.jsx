@@ -20,6 +20,8 @@ const MessageForm = ({message, onSave, onChange}) =>
       <label htmlFor="category">Category:</label>
       <select
         name="category"
+        selected="cat1"
+        type="select"
         value={message.category}
         onChange={onChange}
         style={{display: 'block'}}>
