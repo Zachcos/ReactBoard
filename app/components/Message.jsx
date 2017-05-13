@@ -73,6 +73,15 @@ export class Message extends React.Component {
       return <i style={{display: 'inline', float: 'right', marginTop: 10}}>Post created by: {author.displayName}</i>
     }
 
+    const renderComments = () => {
+      const {message} = this.props;
+      if (message.comments > 0) {
+        return <p>THERE ARE COMMENTS HERE</p>
+      } else {
+        return <p>FOUND NO COMMENTS</p>
+      }
+    }
+
     if (this.state.isEditing) {
       return (
         <div>
@@ -98,6 +107,7 @@ export class Message extends React.Component {
         <div className="panel-footer">
           {renderMessageButtons()}
         </div>
+        {renderComments()}
       </div>
     )
   }
