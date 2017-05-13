@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import firebase from 'app/firebase';
 
 import MessageForm from 'MessageForm';
+import Comments from 'Comments';
 
 export class Message extends React.Component {
   constructor(props) {
@@ -73,15 +74,6 @@ export class Message extends React.Component {
       return <i style={{display: 'inline', float: 'right', marginTop: 10}}>Post created by: {author.displayName}</i>
     }
 
-    const renderComments = () => {
-      const {message} = this.props;
-      if (message.comments > 0) {
-        return <p>THERE ARE COMMENTS HERE</p>
-      } else {
-        return <p>FOUND NO COMMENTS</p>
-      }
-    }
-
     if (this.state.isEditing) {
       return (
         <div>
@@ -109,7 +101,7 @@ export class Message extends React.Component {
             {renderMessageButtons()}
           </div>
         </div>
-        {renderComments()}
+        <Comments />
       </div>
     )
   }
