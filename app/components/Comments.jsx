@@ -1,13 +1,28 @@
 import React from 'react';
 
+import NewComment from 'NewComment';
+
 export class Comments extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {isCommenting: false}
+
+    this.toggleComment = this.toggleComment.bind(this);
   }
+
+  toggleComment() {
+    this.setState({isCommenting: !this.state.isCommenting});
+  }
+
   render() {
-    return <p>Does this work?</p>
+    if (this.state.isCommenting) {
+      return <NewComment />
+    }
+
+    return (
+      <button className="btn btn-success" onClick={this.toggleComment}>Post comment</button>
+    )
   }
 }
 
