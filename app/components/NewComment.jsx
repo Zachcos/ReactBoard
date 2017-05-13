@@ -8,7 +8,7 @@ class NewComment extends React.Component {
 
     this.state = {
       comment: {
-        body: 'this is a test',
+        body: '',
         parentId: this.props.parentId,
         commentNum: this.props.commentNum + 1,
         userId: firebase.auth().currentUser.uid
@@ -28,7 +28,7 @@ class NewComment extends React.Component {
 
   saveComment(event) {
     event.preventDefault();
-    alert(this.state.comment);
+    alert(this.state.comment.body);
     // this.props.actions.startCreateMessage(this.state.message);
   }
 
