@@ -39,3 +39,10 @@ export const usersReducer = (state = [], action) => {
       return state;
   }
 }
+
+export const commentsReducer = (state = [], action) => {
+  switch (action.type) {
+    default:
+      return state;
+  }
+}
