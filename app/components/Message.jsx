@@ -96,16 +96,18 @@ export class Message extends React.Component {
     }
 
     return (
-      <div className="panel panel-default">
-        <div className="panel-heading">
-          <h4 style={{display: 'inline-block'}} >{this.props.message.subject}</h4>
-          {renderAuthor()}
-        </div>
-        <div className="panel-body">
-          <p>{this.props.message.body}</p>
-        </div>
-        <div className="panel-footer">
-          {renderMessageButtons()}
+      <div>
+        <div className="panel panel-default">
+          <div className="panel-heading">
+            <h4 style={{display: 'inline-block'}} >{this.props.message.subject}</h4>
+            {renderAuthor()}
+          </div>
+          <div className="panel-body">
+            <p>{this.props.message.body}</p>
+          </div>
+          <div className="panel-footer">
+            {renderMessageButtons()}
+          </div>
         </div>
         {renderComments()}
       </div>
