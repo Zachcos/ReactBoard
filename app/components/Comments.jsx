@@ -17,7 +17,7 @@ export class Comments extends React.Component {
 
   render() {
     if (this.state.isCommenting) {
-      return <NewComment />
+      return <NewComment parentId={this.props.parentId} commentNum={this.props.commentNum} />
     }
 
     return (
