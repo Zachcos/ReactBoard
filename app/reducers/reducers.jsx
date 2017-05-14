@@ -42,6 +42,11 @@ export const usersReducer = (state = [], action) => {
 
 export const commentsReducer = (state = [], action) => {
   switch (action.type) {
+    case 'CREATE_COMMENT':
+      return[
+        ...state,
+        action.comment
+      ];
     default:
       return state;
   }

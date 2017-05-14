@@ -90,7 +90,25 @@ export const startAddMessages = () => {
 
 
 
+export const createComment = (comment) => {
+  return {
+    type: 'CREATE_COMMENT',
+    comment
+  }
+};
 
+export const startCreateComment = (comment) => {
+  return (dispatch, getState) => {
+    const CommentsRef = firebaseRef.child('comments').push(comment);
+
+    return CommentsRef.then(() => {
+      dispatch(createComment({
+        ...comment,
+        id: CommentsRef.key
+      }))
+    })
+  };
+};
 
 
 

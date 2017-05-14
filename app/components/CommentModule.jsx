@@ -1,9 +1,12 @@
 import React from 'react';
 import firebase from 'app/firebase';
+import {connect} from 'react-redux';
+import bindActionCreators from 'redux';
+import * as actions from 'actions';
 
 import CommentForm from 'CommentForm';
 
-export class CommentModule extends React.Component {
+class CommentModule extends React.Component {
   constructor(props) {
     super(props);
 
@@ -37,10 +40,10 @@ export class CommentModule extends React.Component {
   }
 
   saveComment(event) {
+    const {dispatch} = this.props;
     event.preventDefault();
     this.setState({isCommenting: !this.state.isCommenting});
-    console.log('Saving this comment:', this.state.comment);
-    // this.props.actions.startCreateMessage(this.state.message);
+    dispatch(actions.startCreateComment(this.state.comment));
   }
 
   render() {
@@ -60,4 +63,4 @@ export class CommentModule extends React.Component {
 }
 
 
-export default CommentModule;
+export default connect((state) => state)(CommentModule);
