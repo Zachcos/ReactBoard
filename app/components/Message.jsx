@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import firebase from 'app/firebase';
 
 import MessageForm from 'MessageForm';
-import Comments from 'Comments';
+import CommentModule from 'CommentModule';
 
 export class Message extends React.Component {
   constructor(props) {
@@ -101,7 +101,7 @@ export class Message extends React.Component {
             {renderMessageButtons()}
           </div>
         </div>
-        <Comments parentId={this.props.message.id} commentNum={this.props.message.comments} />
+        <CommentModule parentId={this.props.message.id} commentNum={this.props.message.comments} />
       </div>
     )
   }
