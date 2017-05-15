@@ -5,6 +5,7 @@ import * as actions from 'actions';
 import moment from 'moment';
 
 import NewComment from 'NewComment';
+import CommentList from 'CommentList';
 
 class CommentModule extends React.Component {
   constructor(props) {
@@ -24,7 +25,12 @@ class CommentModule extends React.Component {
       return <NewComment parentId={this.props.parentId} setCommentingState={this.setCommentingState} />
     }
 
-    return <button className="btn btn-success" onClick={this.setCommentingState}>Post comment</button>
+    return (
+      <div>
+        <button className="btn btn-success" onClick={this.setCommentingState}>Post comment</button>
+        <CommentList comments={this.props.comments} parentId={this.props.parentId} />
+      </div>
+    )
   }
 }
 
