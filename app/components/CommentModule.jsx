@@ -2,6 +2,7 @@ import React from 'react';
 import firebase from 'app/firebase';
 import {connect} from 'react-redux';
 import * as actions from 'actions';
+import moment from 'moment';
 
 import CommentForm from 'CommentForm';
 
@@ -14,7 +15,7 @@ class CommentModule extends React.Component {
       comment: {
         body: '',
         parentId: '',
-        commentNum: undefined,
+        created: undefined,
         userId: ''
       }
     }
@@ -33,7 +34,7 @@ class CommentModule extends React.Component {
     const comment = this.state.comment;
     comment[field] = event.target.value;
     comment.parentId = this.props.parentId;
-    comment.commentNum = this.props.commentNum + 1;
+    comment.created = moment().unix();
     comment.userId = firebase.auth().currentUser.uid;
     return this.setState({comment})
   }
