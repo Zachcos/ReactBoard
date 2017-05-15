@@ -17,7 +17,7 @@ class NewMessage extends React.Component {
         body: '',
         category: 'cat1',
         userId: '',
-        comments: 0
+        comments: 0,
         created: undefined,
       }
     };
