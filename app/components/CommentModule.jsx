@@ -56,7 +56,7 @@ class CommentModule extends React.Component {
     const renderComments = () => {
       const {comments, parentId} = this.props;
       return comments.filter(isChildComment(parentId)).map(comment => {
-        return <p>I FOUND ONE</p>
+        return <p>{comment.body}</p>
       })
     }
 
