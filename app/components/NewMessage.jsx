@@ -5,6 +5,7 @@ import * as actions from 'actions';
 import MessageForm from 'MessageForm';
 import PropTypes from 'prop-types';
 import firebase from 'app/firebase';
+import moment from 'moment';
 
 class NewMessage extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class NewMessage extends React.Component {
         category: 'cat1',
         userId: '',
         comments: 0
+        created: undefined,
       }
     };
 
@@ -29,6 +31,7 @@ class NewMessage extends React.Component {
     const message = this.state.message;
     message[field] = event.target.value;
     message.userId = firebase.auth().currentUser.uid;
+    message.created = moment().unix();
     return this.setState({message})
   }
 
