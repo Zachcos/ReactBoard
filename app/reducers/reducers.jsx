@@ -42,6 +42,8 @@ export const usersReducer = (state = [], action) => {
 
 export const commentsReducer = (state = [], action) => {
   switch (action.type) {
+    case 'ADD_COMMENTS':
+      return action.comments;
     case 'CREATE_COMMENT':
       return[
         ...state,

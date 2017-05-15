@@ -110,6 +110,34 @@ export const startCreateComment = (comment) => {
   };
 };
 
+export const addComments = (comments) => {
+  return {
+    type: 'ADD_COMMENTS',
+    comments
+  }
+}
+
+export const startAddComments = () => {
+  return (dispatch, getState) => {
+    const CommentsRef = firebaseRef.child('comments');
+
+    return CommentsRef.once('value').then((snapshot) => {
+      const comments = snapshot.val() || {};
+      const parsedComments = [];
+
+      Object.keys(comments).forEach((commentId) => {
+        parsedComments.push({
+          id:commentId,
+          ...comments[commentId]
+        });
+      });
+
+      dispatch(addComments(parsedComments));
+    })
+  }
+}
+
+
 
 
 export const startUserLogin = (user) => {

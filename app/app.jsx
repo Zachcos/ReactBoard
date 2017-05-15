@@ -24,6 +24,7 @@ const store = require('configureStore').configure();
 // Dispatch actions to add firebase data to redux store
 store.dispatch(actions.startAddMessages());
 store.dispatch(actions.startAddUsers());
+store.dispatch(actions.startAddComments());
 
 // Logging current user on auth state change
 firebase.auth().onAuthStateChanged((user) => {
