@@ -4,78 +4,27 @@ import {connect} from 'react-redux';
 import * as actions from 'actions';
 import moment from 'moment';
 
-import CommentForm from 'CommentForm';
+import NewComment from 'NewComment';
 
 class CommentModule extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      isCommenting: false,
-      comment: {
-        body: '',
-        parentId: '',
-        created: undefined,
-        userId: ''
-      }
-    }
+    this.state = {isCommenting: false}
 
-    this.toggleComment = this.toggleComment.bind(this);
-    this.updateCommentState = this.updateCommentState.bind(this);
-    this.saveComment = this.saveComment.bind(this);
+    this.setCommentingState = this.setCommentingState.bind(this);
   }
 
-  toggleComment() {
+  setCommentingState() {
     this.setState({isCommenting: !this.state.isCommenting});
-  }
-
-  updateCommentState(event) {
-    const field = event.target.name;
-    const comment = this.state.comment;
-    comment[field] = event.target.value;
-    comment.parentId = this.props.parentId;
-    comment.created = moment().unix();
-    comment.userId = firebase.auth().currentUser.uid;
-    return this.setState({comment})
-  }
-
-  saveComment(event) {
-    const {dispatch} = this.props;
-    event.preventDefault();
-    this.setState({isCommenting: !this.state.isCommenting});
-    dispatch(actions.startCreateComment(this.state.comment));
   }
 
   render() {
-    const {parentId} = this.props;
-    const isChildComment = (parentId) => (comment) => {
-      if (parentId === comment.parentId) {
-        return comment
-      }
-    }
-
-    const renderComments = () => {
-      const {comments, parentId} = this.props;
-      return comments.filter(isChildComment(parentId)).map(comment => {
-        return <p>{comment.body}</p>
-      })
-    }
-
     if (this.state.isCommenting) {
-      return (
-        <CommentForm
-          comment={this.state.comment}
-          onSave={this.saveComment}
-          onChange={this.updateCommentState} />
-      )
+      return <NewComment parentId={this.props.parentId} setCommentingState={this.setCommentingState} />
     }
 
-    return (
-      <div>
-        <button className="btn btn-success" onClick={this.toggleComment}>Post comment</button>
-        {renderComments()}
-      </div>
-    )
+    return <button className="btn btn-success" onClick={this.setCommentingState}>Post comment</button>
   }
 }
 

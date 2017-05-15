@@ -101,7 +101,7 @@ export class Message extends React.Component {
             {renderMessageButtons()}
           </div>
         </div>
-        <CommentModule parentId={this.props.message.id} commentNum={this.props.message.comments} />
+        <CommentModule parentId={this.props.message.id} />
       </div>
     )
   }
