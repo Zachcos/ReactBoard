@@ -13,10 +13,13 @@ export class Comment extends React.Component {
     }
 
     return (
-      <div>
-        <p>{body}</p>
-        <p>{userId}</p>
-        {renderAuthor()}
+      <div className="panel panel-success" style={{marginTop: 20, marginLeft: 35}}>
+        <div className="panel-heading">
+          {renderAuthor()}
+        </div>
+        <div className="panel-body">
+          {body}
+        </div>
       </div>
     )
   }
