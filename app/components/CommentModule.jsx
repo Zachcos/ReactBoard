@@ -1,7 +1,6 @@
 import React from 'react';
 import firebase from 'app/firebase';
 import {connect} from 'react-redux';
-import bindActionCreators from 'redux';
 import * as actions from 'actions';
 
 import CommentForm from 'CommentForm';
@@ -47,6 +46,20 @@ class CommentModule extends React.Component {
   }
 
   render() {
+    const {parentId} = this.props;
+    const isChildComment = (parentId) => (comment) => {
+      if (parentId === comment.parentId) {
+        return comment
+      }
+    }
+
+    const renderComments = () => {
+      const {comments, parentId} = this.props;
+      return comments.filter(isChildComment(parentId)).map(comment => {
+        return <p>I FOUND ONE</p>
+      })
+    }
+
     if (this.state.isCommenting) {
       return (
         <CommentForm
@@ -57,7 +70,10 @@ class CommentModule extends React.Component {
     }
 
     return (
-      <button className="btn btn-success" onClick={this.toggleComment}>Post comment</button>
+      <div>
+        <button className="btn btn-success" onClick={this.toggleComment}>Post comment</button>
+        {renderComments()}
+      </div>
     )
   }
 }
