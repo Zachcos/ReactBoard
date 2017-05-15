@@ -1,4 +1,5 @@
 import React from 'react';
+import Comment from 'Comment';
 
 const CommentList = ({comments, parentId}) => {
   const isMessageComment = (parentId) => (comment) => {
@@ -10,7 +11,7 @@ const CommentList = ({comments, parentId}) => {
   const renderList = () => {
     if (comments.length > 0) {
       return comments.filter(isMessageComment(parentId)).map(comment => {
-        return <p key={comment.id}>{comment.body}</p>
+        return <Comment key={comment.id} {...comment} />
       })
     } else {
       return <p>No comments to display</p>
