@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import * as actions from 'actions';
 import PropTypes from 'prop-types';
 import firebase from 'app/firebase';
+import moment from 'moment';
 
 import MessageForm from 'MessageForm';
 import CommentModule from 'CommentModule';
@@ -51,6 +52,8 @@ export class Message extends React.Component {
   }
 
   render() {
+    const timestamp = moment.unix(this.props.message.created).fromNow();
+
     const renderMessageButtons = () => {
       const activeUser = firebase.auth().currentUser;
       if(activeUser) {
@@ -71,7 +74,7 @@ export class Message extends React.Component {
       if (users.length > 0) {
         author = {...users.find(user => user.uid === message.userId)}
       }
-      return <i style={{display: 'inline', float: 'right', marginTop: 10}}>Post created by: {author.displayName}</i>
+      return <i style={{display: 'inline', float: 'right', marginTop: 10}}>Post by: {author.displayName}</i>
     }
 
     if (this.state.isEditing) {
@@ -89,18 +92,19 @@ export class Message extends React.Component {
 
     return (
       <div>
-        <div className="panel panel-default">
+        <div className="panel panel-success">
           <div className="panel-heading">
             <h4 style={{display: 'inline-block'}} >{this.props.message.subject}</h4>
             {renderAuthor()}
           </div>
           <div className="panel-body">
-            <p>{this.props.message.body}</p>
+            {this.props.message.body}
           </div>
-          <div className="panel-footer">
-            {renderMessageButtons()}
+          <div className="panel-footer" style={{backgroundColor: '#dff0d8', color: '#3c763d'}}>
+            <div className="text-right">{timestamp}</div>
           </div>
         </div>
+        <div className="text-right">{renderMessageButtons()}</div>
         <CommentModule parentId={this.props.message.id} />
       </div>
     )
