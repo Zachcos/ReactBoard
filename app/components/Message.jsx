@@ -59,8 +59,8 @@ export class Message extends React.Component {
       if(activeUser) {
         if (this.state.message.userId === activeUser.uid) {
           return (
-            <div style={{display: 'inline'}}>
-              <button className="btn btn-primary" onClick={this.toggleEdit} style={{marginRight: 5}}>Edit</button>
+            <div className="btn-group btn-group-xs" style={{display: 'inline'}}>
+              <button className="btn btn-primary" onClick={this.toggleEdit}>Edit</button>
               <button className="btn btn-danger" onClick={this.deleteMessage}>Delete</button>
             </div>
           )
@@ -101,11 +101,15 @@ export class Message extends React.Component {
             {this.props.message.body}
           </div>
           <div className="panel-footer" style={{backgroundColor: '#dff0d8', color: '#3c763d'}}>
+            {renderMessageButtons()}
             <div className="text-right">{timestamp}</div>
           </div>
         </div>
+<<<<<<< HEAD
         <div className="text-right">{renderMessageButtons()}</div>
         <CommentModule parentId={this.props.message.id} />
+=======
+>>>>>>> f0035bf1233c2d04a6a1e97d8733fbb54bcdd845
       </div>
     )
   }
