@@ -27,8 +27,8 @@ class CommentModule extends React.Component {
 
     return (
       <div>
-        <button className="btn btn-success" onClick={this.setCommentingState}>Post comment</button>
         <CommentList comments={this.props.comments} parentId={this.props.parentId} />
+        <button className="btn btn-success" onClick={this.setCommentingState}>Post comment</button>
       </div>
     )
   }
