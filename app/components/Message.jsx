@@ -105,11 +105,8 @@ export class Message extends React.Component {
             <div className="text-right">{timestamp}</div>
           </div>
         </div>
-<<<<<<< HEAD
         <div className="text-right">{renderMessageButtons()}</div>
         <CommentModule parentId={this.props.message.id} />
-=======
->>>>>>> f0035bf1233c2d04a6a1e97d8733fbb54bcdd845
       </div>
     )
   }
