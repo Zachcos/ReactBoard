@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import * as actions from 'actions';
 import PropTypes from 'prop-types';
 import firebase from 'app/firebase';
+import moment from 'moment';
 
 import MessageForm from 'MessageForm';
 
@@ -50,6 +51,8 @@ export class Message extends React.Component {
   }
 
   render() {
+    const timestamp = moment.unix(this.props.message.created).fromNow();
+
     const renderMessageButtons = () => {
       const activeUser = firebase.auth().currentUser;
       if(activeUser) {
@@ -97,7 +100,7 @@ export class Message extends React.Component {
             {this.props.message.body}
           </div>
           <div className="panel-footer" style={{backgroundColor: '#dff0d8', color: '#3c763d'}}>
-            <div className="text-right">this is a test</div>
+            <div className="text-right">{timestamp}</div>
           </div>
         </div>
         <div className="text-right">{renderMessageButtons()}</div>
