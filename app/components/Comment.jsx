@@ -23,7 +23,7 @@ export class Comment extends React.Component {
           {body}
         </div>
         <div className="panel-footer" style={{backgroundColor: "#d9edf7", color: '#31708f'}}>
-          <div className="text-right">Posted {timestamp}</div>
+          <div className="text-right">{timestamp}</div>
         </div>
       </div>
     )
