@@ -58,6 +58,7 @@ export const startDeleteMessage = (id) => {
     const MessageRef = firebaseRef.child(`messages/${id}`).remove();
     return MessageRef.then(() => {
       dispatch(deleteMessage(id));
+      dispatch(startDeleteComments(id));
     })
   }
 }
@@ -110,6 +111,33 @@ export const startCreateComment = (comment) => {
     })
   };
 };
+
+export const deleteComment = (id) => {
+  return {
+    type: 'DELETE_COMMENT',
+    id
+  }
+}
+
+export const startDeleteComments = (id) => {
+  return (dispatch) => {
+    const CommentsRef = firebaseRef.child('comments');
+
+    return CommentsRef.once('value').then((snapshot) => {
+      const parsedComments = [];
+      snapshot.forEach((comment) => {
+        const commentVal = comment.val();
+        const commentKey = comment.key;
+        console.log('commentval', commentVal)
+        console.log('commentkey', commentKey)
+        if (commentVal.parentId === id) {
+          firebaseRef.child(`comments/${commentKey}`).remove();
+          dispatch(deleteComment(commentKey))
+        }
+      })
+    })
+  }
+}
 
 export const addComments = (comments) => {
   return {

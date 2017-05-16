@@ -45,10 +45,14 @@ export const commentsReducer = (state = [], action) => {
     case 'ADD_COMMENTS':
       return action.comments;
     case 'CREATE_COMMENT':
-      return[
+      return [
         ...state,
         action.comment
       ];
+    case 'DELETE_COMMENT':
+      return [
+        ...state.filter(comment => comment.id !== action.id)
+      ]
     default:
       return state;
   }
