@@ -14,7 +14,13 @@ const CommentList = ({comments, parentId}) => {
         return <Comment key={comment.id} {...comment} />
       })
     } else {
-      return <p>No comments to display</p>
+      return (
+        <div className="panel panel-default">
+          <div className="panel-body">
+            No comments to display
+          </div>
+        </div>
+      )
     }
   }
 
