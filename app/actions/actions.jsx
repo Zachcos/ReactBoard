@@ -128,8 +128,6 @@ export const startDeleteComments = (id) => {
       snapshot.forEach((comment) => {
         const commentVal = comment.val();
         const commentKey = comment.key;
-        console.log('commentval', commentVal)
-        console.log('commentkey', commentKey)
         if (commentVal.parentId === id) {
           firebaseRef.child(`comments/${commentKey}`).remove();
           dispatch(deleteComment(commentKey))
