@@ -27,7 +27,6 @@ const MessageList = ({ messages, searchText, currentCategory }) => {
       )
     }
 
-    // return messages.filter(isSearched(searchText)).map(message => {
     return messages.filter(isCatFilter(currentCategory)).filter(isSearched(searchText)).map(message => {
       return (
         <li key={message.id} className="list-group-item">
